@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, BrowserRouter, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Navbar from './Navbar';
+import Books from './Books';
+import BookInfo from './BookInfo';
+import BookList from './BookList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  renderBookList = () => {
+    return <Books />;
+  };
+
+  renderBookInfo = routerData => {
+    const bookId = routerData.match.params.bookId;
+    if (this.props.favorites.find(book => book.id === bookId)) {
+      const book = this.props.favorites.find(book => book.id === bookId);
+      return <BookInfo bookInfo={book} />;
+    } else {
+      const book = this.props.books.find(book => book.id === bookId);
+      return <BookInfo bookInfo={book} />;
+    }
+  };
+
+  renderFavorites = () => {
+    return <BookList books={this.props.favorites} />;
+  };
+
+  render() {
+    return (
+      <div className="app">
+        <BrowserRouter>
+          <Navbar />
+          <div>
+            <Route exact={true} path="/" render={this.renderBookList} />
+            <Route
+              exact={true}
+              path="/book/:bookId"
+              render={this.renderBookInfo}
+            />
+            <Route
+              exact={true}
+              path="/favorites"
+              render={this.renderFavorites}
+            />
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    books: state.books,
+    favorites: state.favorites,
+  };
+};
+
+export default connect(mapStateToProps)(App);
