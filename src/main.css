@@ -76,7 +76,10 @@ input {
   height: 250px;
 }
 .book-card-description {
-  height: 220px;
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-height: 100%;
   padding: 10px;
 }
 .book-card-description h2 {
@@ -96,9 +99,8 @@ p {
   color: #6c757d;
 }
 .book-card-button {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
+  margin: 0 auto;
   text-align: center;
   padding: 10px;
 }
@@ -112,7 +114,7 @@ p {
   display: flex;
 }
 .book-info-description {
-  height: 130px;
+  height: auto;
   padding: 10px;
 }
 .book-info-description h2 {

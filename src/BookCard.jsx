@@ -15,7 +15,7 @@ class BookCard extends Component {
 
   render() {
     const { volumeInfo } = this.props.bookInfo;
-    const { title, authors } = this.props.bookInfo.volumeInfo;
+    const { title } = this.props.bookInfo.volumeInfo;
     const thumbNail =
       volumeInfo.hasOwnProperty('imageLinks') == false
         ? 'https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337'
@@ -28,6 +28,10 @@ class BookCard extends Component {
       volumeInfo.hasOwnProperty('description') == false
         ? 'No description'
         : volumeInfo.description.substring(0, 150) + '...';
+    const authors =
+      volumeInfo.hasOwnProperty('authors') == false
+        ? 'Not available'
+        : volumeInfo.authors[0];
     return (
       <div className="book-card-container">
         <img className="book-card-image" src={thumbNail} />

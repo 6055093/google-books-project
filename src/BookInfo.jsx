@@ -36,7 +36,7 @@ class BookInfo extends Component {
           <img className="book-info-image" src={thumbNail} />
           <div className="book-info-description">
             <h2>{title}</h2>
-            <h3>Author: {authors}</h3>
+            <h3>Author: {authors.join(', ')}</h3>
             <p>
               Published:{' '}
               {publishYear == '0000'
