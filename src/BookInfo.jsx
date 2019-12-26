@@ -15,7 +15,6 @@ class BookInfo extends Component {
   };
 
   render() {
-    console.log(this.props.bookInfo);
     const { volumeInfo } = this.props.bookInfo;
     const { title, authors } = this.props.bookInfo.volumeInfo;
     const thumbNail =
