@@ -3,10 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class BookCard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   removeBook = () => {
     let book = this.props.bookInfo;
     book.isFavorite = false;
@@ -34,7 +30,7 @@ class BookCard extends Component {
         : volumeInfo.authors[0];
     return (
       <div className="book-card-container">
-        <img className="book-card-image" src={thumbNail} />
+        <img className="book-card-image" src={thumbNail} alt="" />
         <div className="book-card-description">
           <h2>{title}</h2>
           <h3>Author: {authors}</h3>

@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import BookCard from './BookCard.jsx';
 
 class BookList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="book-list">
