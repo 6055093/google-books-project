@@ -175,6 +175,7 @@ select:focus {
 }
 
 button {
+  cursor: pointer;
   display: inline;
   background: #09a576;
   color: #fff;
@@ -183,6 +184,11 @@ button {
   margin: 0 15px 0 0;
   position: relative;
   top: -2px;
+  border-radius: 10px;
+}
+button:active {
+  transform: scale(0.94);
+  transition: ease-in-out 0.01s;
 }
 
 input {
@@ -238,6 +244,7 @@ p {
   text-align: center;
   padding: 10px;
 }
+
 .book-info-container {
   width: 500px;
   margin: 25px auto;

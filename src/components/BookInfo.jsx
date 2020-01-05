@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 class BookInfo extends Component {
   addToFavorites = () => {
+    alert('Added to favorites!');
     let book = this.props.bookInfo;
     book.isFavorite = true;
     this.props.dispatch({ type: 'FAVORITE_BOOK', book: book });
