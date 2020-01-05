@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter, Link } from 'react-router-dom';
+import { Route, BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Navbar from './Navbar';
-import Books from './Books';
-import BookInfo from './BookInfo';
-import BookList from './BookList';
+import Navbar from './Navbar.jsx';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import Books from './Books.jsx';
+import BookInfo from './BookInfo.jsx';
+import BookList from './BookList.jsx';
 
 class App extends Component {
+  async componentDidMount() {
+    const response = await fetch('/session');
+    const body = await response.json();
+    if (body.success) {
+      this.props.dispatch({ type: 'LOGIN_SUCCESS', username: body.username });
+    }
+  }
+
+  renderLogin = () => {
+    return <Login />;
+  };
+  renderSignup = routerData => {
+    return <Signup history={routerData.history} />;
+  };
   renderBookList = () => {
     return <Books />;
   };
@@ -30,20 +46,37 @@ class App extends Component {
     return (
       <div className="app">
         <BrowserRouter>
-          <Navbar />
-          <div>
-            <Route exact={true} path="/" render={this.renderBookList} />
-            <Route
-              exact={true}
-              path="/book/:bookId"
-              render={this.renderBookInfo}
-            />
-            <Route
-              exact={true}
-              path="/favorites"
-              render={this.renderFavorites}
-            />
-          </div>
+          {this.props.lgin ? (
+            <>
+              <Navbar />
+              <div>
+                <Route exact={true} path="/" render={this.renderBookList} />
+                <Route
+                  exact={true}
+                  path="/book/:bookId"
+                  render={this.renderBookInfo}
+                />
+                <Route
+                  exact={true}
+                  path="/favorites"
+                  render={this.renderFavorites}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="formPage">
+              <div className="fillerPage">
+                SEARCH BOOKS
+                <p className="slogan">Keep track of your favorite books!</p>
+              </div>
+              <div className="form">
+                <Route path="/" exact render={this.renderLogin} />
+                <Route path="/login" exact render={this.renderLogin} />
+                <Route path="/signup" exact render={this.renderSignup} />
+                <Route path="/logout" exact render={this.renderLogin} />
+              </div>
+            </div>
+          )}
         </BrowserRouter>
       </div>
     );
@@ -54,6 +87,7 @@ const mapStateToProps = state => {
   return {
     books: state.books,
     favorites: state.favorites,
+    lgin: state.loggedIn,
   };
 };
 

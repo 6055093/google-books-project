@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SearchBox from './SearchBox';
+import SearchBox from './SearchBox.jsx';
 import request from 'superagent';
 import { connect } from 'react-redux';
-import BookList from './BookList';
+import BookList from './BookList.jsx';
 
 class Books extends Component {
   constructor(props) {

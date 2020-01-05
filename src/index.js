@@ -4,11 +4,19 @@ import './main.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import store from './store.js';
+import returnStoreAndPersistor from './store.js';
+import { PersistGate } from 'redux-persist/integration/react';
+import reloadMagic from './reload-magic-client.js'; // automatic reload
+reloadMagic(); // automatic reload
+
+const { store } = returnStoreAndPersistor();
+const { persistor } = returnStoreAndPersistor();
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

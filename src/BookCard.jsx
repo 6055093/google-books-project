@@ -17,19 +17,19 @@ class BookCard extends Component {
     const { volumeInfo } = this.props.bookInfo;
     const { title } = this.props.bookInfo.volumeInfo;
     const thumbNail =
-      volumeInfo.hasOwnProperty('imageLinks') == false
+      volumeInfo.hasOwnProperty('imageLinks') === false
         ? 'https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337'
         : volumeInfo.imageLinks.thumbnail;
     const publishYear =
-      volumeInfo.hasOwnProperty('publishedDate') == false
+      volumeInfo.hasOwnProperty('publishedDate') === false
         ? (volumeInfo['publishedDate'] = '0000')
         : volumeInfo.publishedDate;
     const description =
-      volumeInfo.hasOwnProperty('description') == false
+      volumeInfo.hasOwnProperty('description') === false
         ? 'No description'
         : volumeInfo.description.substring(0, 150) + '...';
     const authors =
-      volumeInfo.hasOwnProperty('authors') == false
+      volumeInfo.hasOwnProperty('authors') === false
         ? 'Not available'
         : volumeInfo.authors[0];
     return (
@@ -40,7 +40,7 @@ class BookCard extends Component {
           <h3>Author: {authors}</h3>
           <p>
             Published:
-            {publishYear == '0000'
+            {publishYear === '0000'
               ? 'Not available'
               : publishYear.substring(0, 4)}
           </p>

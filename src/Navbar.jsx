@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Navbar extends Component {
+  handleLogout = () => {
+    fetch('/logout', { method: 'POST', credentials: 'same-origin' });
+    this.props.dispatch({ type: 'LOGOUT' });
+  };
+
   render() {
     return (
       <div className="navbar">
@@ -11,10 +17,13 @@ class Navbar extends Component {
         <div className="nav-links">
           <Link to="/">Search</Link>
           <Link to="/favorites">Favorites</Link>
+          <Link onClick={this.handleLogout} to="/">
+            Logout
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-export default Navbar;
+export default connect(null)(Navbar);

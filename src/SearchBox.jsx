@@ -9,6 +9,7 @@ class SearchBox extends Component {
             onChange={this.props.handleSearch}
             placeholder="Search books..."
             type="text"
+            className="searchInput"
           />
           <button type="submit">Search</button>
         </form>
