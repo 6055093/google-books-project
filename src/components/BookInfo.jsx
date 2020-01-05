@@ -1,3 +1,5 @@
+/** This componenet displays the book desctipion, and allows users to add them to favorites. */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 

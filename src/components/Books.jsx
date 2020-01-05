@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchBox from './SearchBox.jsx';
-import request from 'superagent';
+import request from 'superagent'; /** Used Superagent since the http library is very simple and userfriendly */
 import { connect } from 'react-redux';
 import BookList from './BookList.jsx';
 
