@@ -12,15 +12,13 @@ class BookInfo extends Component {
       bookInfo.isFavorite = true;
       return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
     } else {
-      this.props.favorites.map(book => {
-        if (book.id === bookInfo.id) {
-          return alert('Book already in favorites!');
-        } else {
-          alert('Added to favorites!');
-          bookInfo.isFavorite = true;
-          return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
-        }
-      });
+      if (this.props.favorites.some(book => book.id === bookInfo.id)) {
+        return alert('Book already in favorites!');
+      } else {
+        alert('Added to favorites!');
+        bookInfo.isFavorite = true;
+        return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
+      }
     }
   };
 
