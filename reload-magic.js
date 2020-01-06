@@ -1,3 +1,6 @@
+/**reloadMagic is similar to react-hot-loader.
+ * It refreshes the app, without refreshing the browser if any changes occur. (has been created by Jacques LeNorman, previous coach at Concordia Bootcamps)*/
+
 var WebSocketServer = require('ws').Server,
   wss = new WebSocketServer({ port: 40510 });
 wlist = [];

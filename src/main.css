@@ -12,6 +12,8 @@ code {
     monospace;
 }
 
+/* ----------------Start Navbar----------------*/
+
 .navbar {
   display: flex;
   align-items: center;
@@ -22,7 +24,8 @@ a {
   margin: 10px;
   color: #6c757d;
 }
-
+/* ----------------End Navbar----------------*/
+/* ----------------Start Login and Signup Page----------------*/
 .formPage {
   display: flex;
   justify-content: center;
@@ -159,6 +162,9 @@ select:focus {
   outline: none;
 }
 
+/* ----------------End Login and Signup Page----------------*/
+/* ----------------Start Searchbox and Book Cards----------------*/
+
 .input {
   width: 100px;
   padding: 20px 0 20px 0;
@@ -246,6 +252,9 @@ p {
   padding: 10px;
 }
 
+/* ----------------End Searchbox and Book Cards----------------*/
+/* ----------------Start Book Info----------------*/
+
 .book-info-container {
   width: 500px;
   margin: 25px auto;
@@ -275,3 +284,4 @@ p {
 .book-info-description p {
   color: #6c757d;
 }
+/* ----------------End Book Info----------------*/

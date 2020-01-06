@@ -1,3 +1,5 @@
+//server is used for the login and signup features. Currently working on authorizing different users to have different favorites.
+
 const express = require('express');
 const multer = require('multer');
 const app = express();

@@ -1,8 +1,11 @@
+//this componenet is the book card shown when searching for books
+
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class BookCard extends Component {
+  //remove book from favorites in redux store
   removeBook = () => {
     let book = this.props.bookInfo;
     book.isFavorite = false;
@@ -58,6 +61,7 @@ class BookCard extends Component {
   }
 }
 
+//get state from store
 const mapStateToProps = state => {
   return {
     favorites: state.favorites,

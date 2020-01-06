@@ -1,3 +1,5 @@
+//Component for the Search box to search books. handleSubmit and handleSearch have been passed down as props from the Books component.
+
 import React, { Component } from 'react';
 
 class SearchBox extends Component {

@@ -1,9 +1,10 @@
-/** This componenet displays the book desctipion, and allows users to add them to favorites. */
+//This componenet displays the book description, and allows users to add them to favorites.
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BookInfo extends Component {
+  //add book to favorites
   addToFavorites = () => {
     alert('Added to favorites!');
     let book = this.props.bookInfo;
@@ -14,6 +15,8 @@ class BookInfo extends Component {
   render() {
     const { volumeInfo } = this.props.bookInfo;
     const { title, authors } = this.props.bookInfo.volumeInfo;
+
+    // format properties from API to show the way they're intended
     const thumbNail =
       volumeInfo.hasOwnProperty('imageLinks') === false
         ? 'https://vignette.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337'

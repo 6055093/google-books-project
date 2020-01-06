@@ -1,3 +1,5 @@
+//Componenet renders the Login funtion if user is not logged in
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -9,17 +11,16 @@ class UnconnectedLogin extends Component {
       password: '',
     };
   }
+
+  //modify the username and password before making our request to the server
   handleUsernameChange = event => {
-    console.log('new username', event.target.value);
     this.setState({ username: event.target.value });
   };
   handlePasswordChange = event => {
-    console.log('new password', event.target.value);
     this.setState({ password: event.target.value });
   };
   handleSubmit = async evt => {
     evt.preventDefault();
-    console.log('login form submitted');
     let data = new FormData();
     data.append('username', this.state.username);
     data.append('password', this.state.password);
@@ -29,13 +30,13 @@ class UnconnectedLogin extends Component {
       credentials: 'include',
     });
     let responseBody = await response.text();
-    console.log('responseBody from login', responseBody);
     let body = JSON.parse(responseBody);
-    console.log('parsed body', body);
+    //if login fails, alert the user
     if (!body.success) {
       alert('login failed');
       return;
     }
+    //else, login the user.
     this.props.dispatch({
       type: 'LOGIN_SUCCESS',
       username: this.state.username,

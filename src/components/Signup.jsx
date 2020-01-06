@@ -1,3 +1,5 @@
+//Componenet renders the Signup page for new users.
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -10,6 +12,8 @@ class Signup extends Component {
       password: '',
     };
   }
+
+  //modify the username and password before making our request to the server
   handleUsernameChange = event => {
     this.setState({ username: event.target.value });
   };
@@ -27,6 +31,8 @@ class Signup extends Component {
       credentials: 'same-origin',
     });
     const body = await response.json();
+
+    //if signup fails, alert the user that the username is taken
     if (!body.success) return alert(body.message);
     this.props.dispatch({
       type: 'LOGIN_SUCCESS',
