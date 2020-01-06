@@ -4,12 +4,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BookInfo extends Component {
-  //add book to favorites
+  //add book to favorites, check if book is already there
   addToFavorites = () => {
-    alert('Added to favorites!');
-    let book = this.props.bookInfo;
-    book.isFavorite = true;
-    this.props.dispatch({ type: 'FAVORITE_BOOK', book: book });
+    let bookInfo = this.props.bookInfo;
+    if (this.props.favorites.length < 1) {
+      alert('Added to favorites!');
+      bookInfo.isFavorite = true;
+      return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
+    } else {
+      this.props.favorites.map(book => {
+        if (book.id === bookInfo.id) {
+          return alert('Book already in favorites!');
+        } else {
+          alert('Added to favorites!');
+          bookInfo.isFavorite = true;
+          return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
+        }
+      });
+    }
   };
 
   render() {
@@ -56,4 +68,10 @@ class BookInfo extends Component {
   }
 }
 
-export default connect(null)(BookInfo);
+const mapStateToProps = state => {
+  return {
+    favorites: state.favorites,
+  };
+};
+
+export default connect(mapStateToProps)(BookInfo);
