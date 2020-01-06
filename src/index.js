@@ -22,7 +22,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-ß;
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
