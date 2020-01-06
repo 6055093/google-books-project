@@ -7,18 +7,12 @@ class BookInfo extends Component {
   //add book to favorites, check if book is already there
   addToFavorites = () => {
     let bookInfo = this.props.bookInfo;
-    if (this.props.favorites.length < 1) {
+    if (this.props.favorites.some(book => book.id === bookInfo.id)) {
+      return alert('Book already in favorites!');
+    } else {
       alert('Added to favorites!');
       bookInfo.isFavorite = true;
       return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
-    } else {
-      if (this.props.favorites.some(book => book.id === bookInfo.id)) {
-        return alert('Book already in favorites!');
-      } else {
-        alert('Added to favorites!');
-        bookInfo.isFavorite = true;
-        return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
-      }
     }
   };
 
