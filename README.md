@@ -30,7 +30,7 @@ nodemon server.js
 
 ## Screenshots
 
-![Alt text](./public/screenshots/Login.png 'Login page')
+![Alt text](./public/screenshots/Signin.png 'Login page')
 
 ![Alt text](./public/screenshots/Search.png 'Search Books')
 
