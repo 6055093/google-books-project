@@ -80,7 +80,7 @@ app.post('/signup', upload.none(), (req, res) => {
 
 app.all('/*', (req, res, next) => {
   // needed for react router
-  res.sendFile(__dirname + 'index.html');
+  res.sendFile(__dirname + '/build/index.html');
 });
 
 app.listen(4000, '0.0.0.0', () => {

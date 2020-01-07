@@ -41,6 +41,7 @@ class UnconnectedLogin extends Component {
       type: 'LOGIN_SUCCESS',
       username: this.state.username,
     });
+    localStorage.clear();
   };
   render = () => {
     return (
