@@ -11,6 +11,10 @@ class Navbar extends Component {
     this.props.dispatch({ type: 'LOGOUT' }); //clear current user from store
   };
 
+  clearSearch = () => {
+    return this.props.dispatch({ type: 'CLEAR_SEARCH' }); //clear books array in store for new search
+  };
+
   render() {
     return (
       <div className="navbar">
@@ -18,7 +22,9 @@ class Navbar extends Component {
           <h1>Search Books</h1>
         </div>
         <div className="nav-links">
-          <Link to="/">Search</Link>
+          <Link onClick={this.clearSearch} to="/">
+            New Search
+          </Link>
           <Link to="/favorites">Favorites</Link>
           <Link onClick={this.handleLogout} to="/">
             Logout

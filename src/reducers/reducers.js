@@ -13,6 +13,8 @@ function otherReducers(state = otherState, action) {
   switch (action.type) {
     case 'SEARCHED_BOOKS':
       return { ...state, books: action.books };
+    case 'CLEAR_SEARCH':
+      return { ...state, books: [] };
     default:
       return state;
   }
