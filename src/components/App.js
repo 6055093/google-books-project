@@ -9,7 +9,7 @@ import BookInfo from './BookInfo.jsx';
 import BookList from './BookList.jsx';
 
 class App extends Component {
-  //Check to see if user already logged in
+  //Check to see if user already logged in and has existing session to render home directly
   async componentDidMount() {
     const response = await fetch('/session');
     const body = await response.json();
@@ -46,7 +46,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props);
     //if user is logged in already, render home, if not, render login/signup page
     return (
       <div className="app">

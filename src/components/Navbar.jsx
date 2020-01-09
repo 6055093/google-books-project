@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 class Navbar extends Component {
   //request to the server to logout
   handleLogout = () => {
-    fetch('/logout', { method: 'POST', credentials: 'same-origin' });
-    this.props.dispatch({ type: 'LOGOUT' });
+    fetch('/logout', { method: 'POST', credentials: 'same-origin' }); //delete user session
+    this.props.dispatch({ type: 'LOGOUT' }); //clear current user from store
   };
 
   render() {

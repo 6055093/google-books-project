@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class BookInfo extends Component {
-  //add book to favorites, check if book is already there
+  //add book to favorites, check if book is already there, if yes, alert the user
   addToFavorites = () => {
     let bookInfo = this.props.bookInfo;
     if (this.props.favorites.some(book => book.id === bookInfo.id)) {
@@ -12,7 +12,7 @@ class BookInfo extends Component {
     } else {
       alert('Added to favorites!');
       bookInfo.isFavorite = true;
-      return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo });
+      return this.props.dispatch({ type: 'FAVORITE_BOOK', book: bookInfo }); // dispatch to store so we can render from favorites (instead of books)
     }
   };
 

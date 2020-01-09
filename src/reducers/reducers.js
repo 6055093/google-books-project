@@ -10,8 +10,6 @@ const otherState = {
 };
 
 function otherReducers(state = otherState, action) {
-  console.log(action);
-
   switch (action.type) {
     case 'SEARCHED_BOOKS':
       return { ...state, books: action.books };
