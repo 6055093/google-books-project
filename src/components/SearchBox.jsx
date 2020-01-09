@@ -18,21 +18,20 @@ class SearchBox extends Component {
     e.preventDefault();
     this.setState({ loading: true });
     //superagent makes the request to the api with the query from searchInput
-    setTimeout(() => {
-      request
-        .get('https://www.googleapis.com/books/v1/volumes')
-        .query({ q: this.state.searchInput })
-        .then(data => {
-          this.props.dispatch({
-            type: 'SEARCHED_BOOKS',
-            books: data.body.items,
-          });
-        })
-        .catch(err => {
-          console.log(err.message, err.response);
+    request
+      .get('https://www.googleapis.com/books/v1/volumes')
+      .query({ q: this.state.searchInput })
+      //send action to store books in redux for rendering in BooksList component
+      .then(data => {
+        this.props.dispatch({
+          type: 'SEARCHED_BOOKS',
+          books: data.body.items,
         });
-      this.setState({ loading: false });
-    }, 1500);
+        this.setState({ loading: false });
+      })
+      .catch(err => {
+        console.log(err.message, err.response);
+      });
   };
 
   //modify the state with the user searchInput
@@ -50,11 +49,7 @@ class SearchBox extends Component {
             type="text"
             className="searchInput"
           />
-          <button
-            onClick={this.handleSubmit}
-            disabled={this.state.loading}
-            type="submit"
-          >
+          <button disabled={this.state.loading} type="submit">
             {this.state.loading && <i className="fa fa-refresh fa-spin"></i>}
             {this.state.loading && <span>Getting books...</span>}
             {!this.state.loading && <span>Search</span>}

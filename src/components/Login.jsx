@@ -1,4 +1,4 @@
-//Componenet renders the Login funtion if user is not logged in
+//Componenet renders the Login function if user is not logged in
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -41,7 +41,6 @@ class UnconnectedLogin extends Component {
       type: 'LOGIN_SUCCESS',
       username: this.state.username,
     });
-    localStorage.clear();
   };
   render = () => {
     return (

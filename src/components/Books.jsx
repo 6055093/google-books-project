@@ -19,7 +19,7 @@ class Books extends Component {
 //get state from store
 const mapStateToProps = state => {
   return {
-    books: state.books,
+    books: state.otherReducers.books,
   };
 };
 

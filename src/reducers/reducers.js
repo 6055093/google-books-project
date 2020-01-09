@@ -1,11 +1,25 @@
+import { combineReducers } from 'redux';
+
 const initialState = {
-  books: [],
   favorites: [],
   loggedIn: false,
   username: '',
 };
+const otherState = {
+  books: [],
+};
 
-function reducer(state = initialState, action) {
+function otherReducers(state = otherState, action) {
+  console.log(action);
+
+  switch (action.type) {
+    case 'SEARCHED_BOOKS':
+      return { ...state, books: action.books };
+    default:
+      return state;
+  }
+}
+function generalReducers(state = initialState, action) {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
       return { ...state, loggedIn: true, username: action.username };
@@ -15,8 +29,7 @@ function reducer(state = initialState, action) {
         loggedIn: false,
         username: '',
       };
-    case 'SEARCHED_BOOKS':
-      return { ...state, books: action.books };
+
     case 'FAVORITE_BOOK':
       return { ...state, favorites: [...state.favorites, action.book] };
     case 'REMOVE_BOOK':
@@ -32,4 +45,7 @@ function reducer(state = initialState, action) {
   }
 }
 
-export default reducer;
+export default combineReducers({
+  otherReducers,
+  generalReducers,
+});

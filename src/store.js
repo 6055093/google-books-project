@@ -6,6 +6,7 @@ import reducer from './reducers/reducers.js'; //import our reducers to modify th
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['otherReducers'], //exclude books from persisting
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

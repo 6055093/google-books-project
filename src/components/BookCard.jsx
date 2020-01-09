@@ -64,7 +64,7 @@ class BookCard extends Component {
 //get state from store
 const mapStateToProps = state => {
   return {
-    favorites: state.favorites,
+    favorites: state.generalReducers.favorites,
   };
 };
 

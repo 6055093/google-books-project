@@ -46,6 +46,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.props);
     //if user is logged in already, render home, if not, render login/signup page
     return (
       <div className="app">
@@ -89,9 +90,9 @@ class App extends Component {
 //get state from store
 const mapStateToProps = state => {
   return {
-    books: state.books,
-    favorites: state.favorites,
-    lgin: state.loggedIn,
+    books: state.otherReducers.books,
+    favorites: state.generalReducers.favorites,
+    lgin: state.generalReducers.loggedIn,
   };
 };
 

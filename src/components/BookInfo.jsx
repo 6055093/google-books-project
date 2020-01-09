@@ -62,7 +62,7 @@ class BookInfo extends Component {
 
 const mapStateToProps = state => {
   return {
-    favorites: state.favorites,
+    favorites: state.generalReducers.favorites,
   };
 };
 
