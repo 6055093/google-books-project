@@ -1,4 +1,4 @@
-# Google Books Project
+# Google Books
 
 Application that allows the user to search for books (using Google Books API) and favorite them. Easily keep track of your favorite books!
 
