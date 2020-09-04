@@ -44,7 +44,7 @@ nodemon server.js
 
 ## Authors
 
-- **Victor Petrescu** - Creator - [6055093](https://github.com/6055093)
+- **Victor Petrescu** - Creator - [vicpetrescu](https://github.com/vicpetrescu)
 
 ## License
 
